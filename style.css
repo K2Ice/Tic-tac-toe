@@ -3,3 +3,81 @@
 	padding: 0;
 	box-sizing: border-box;
 }
+
+:root {
+	font-family: Arial, Helvetica, sans-serif;
+	--gameboardBgcColor: white;
+	--boxBgcColor: black;
+	--boxSignColor: white;
+}
+
+body {
+	background-color: black;
+}
+
+#gameboard {
+	display: grid;
+	margin: 0 auto;
+	margin-top: 50px;
+	width: 600px;
+	grid-template-columns: repeat(3, 200px);
+	grid-template-rows: repeat(3, 200px);
+	background-color: var(--gameboardBgcColor);
+	place-content: center;
+	gap: 10px;
+}
+
+.box {
+	background-color: var(--boxBgcColor);
+	color: var(--boxSignColor);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	font-size: 80px;
+}
+
+form#getPlayersNames {
+	border: 2px solid white;
+	border-radius: 20px;
+	display: flex;
+	width: 50%;
+	margin: 0 auto;
+	flex-direction: column;
+	align-items: center;
+	padding: 50px;
+	gap: 20px;
+}
+
+#playerNameLabel {
+	color: white;
+	font-weight: 900;
+}
+
+#playerName {
+	background-color: black;
+	border: none;
+	border-bottom: 1px dashed white;
+	color: white;
+	text-align: center;
+	max-width: 50%;
+	font-size: 18px;
+	padding-bottom: 5px;
+}
+#playerName:focus {
+	outline: none;
+}
+
+#submitName {
+	border: 2px solid white;
+	border-radius: 20px;
+	padding: 7px 12px;
+	color: white;
+	background-color: black;
+	transition: 0.3s;
+	cursor: pointer;
+}
+
+#submitName:hover {
+	background-color: white;
+	color: black;
+}
