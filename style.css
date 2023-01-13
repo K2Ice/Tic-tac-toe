@@ -33,7 +33,7 @@ body {
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-size: 80px;
+	font-size: 250px;
 }
 
 form#getPlayersNames {
@@ -67,6 +67,13 @@ form#getPlayersNames {
 	outline: none;
 }
 
+/* #playerNo {
+	animation: hide 1 0.5s reverse both;
+}
+#playerNo.hide {
+	animation-direction: normal;
+} */
+
 #submitName {
 	border: 2px solid white;
 	border-radius: 20px;
@@ -80,4 +87,32 @@ form#getPlayersNames {
 #submitName:hover {
 	background-color: white;
 	color: black;
+}
+/* 
+@keyframes hide {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
+} */
+
+#namesBox {
+	position: absolute;
+	color: white;
+}
+
+#namesBox p {
+	padding: 20px;
+	font-size: 32px;
+	border: 1px solid;
+}
+
+#namesBox p.active {
+	color: yellow;
+}
+
+#namesBox p:first-child {
+	margin-bottom: 10px;
 }
