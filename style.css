@@ -9,6 +9,16 @@
 	--gameboardBgcColor: white;
 	--boxBgcColor: black;
 	--boxSignColor: white;
+	--animationtime: 0.3s;
+}
+
+@keyframes hide {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 body {
@@ -16,7 +26,7 @@ body {
 }
 
 #gameboard {
-	display: grid;
+	display: none;
 	margin: 0 auto;
 	margin-top: 50px;
 	width: 600px;
@@ -25,6 +35,7 @@ body {
 	background-color: var(--gameboardBgcColor);
 	place-content: center;
 	gap: 10px;
+	animation: hide var(--animationtime) 1 linear reverse both paused;
 }
 
 .box {
@@ -36,16 +47,25 @@ body {
 	font-size: 250px;
 }
 
+.not-click {
+	pointer-events: none;
+}
+
+.box.win {
+	color: red;
+}
+
 form#getPlayersNames {
 	border: 2px solid white;
 	border-radius: 20px;
 	display: flex;
 	width: 50%;
-	margin: 0 auto;
+	margin: 100px auto 0;
 	flex-direction: column;
 	align-items: center;
 	padding: 50px;
 	gap: 20px;
+	animation: hide var(--animationtime) 1 linear both paused;
 }
 
 #playerNameLabel {
@@ -67,13 +87,6 @@ form#getPlayersNames {
 	outline: none;
 }
 
-/* #playerNo {
-	animation: hide 1 0.5s reverse both;
-}
-#playerNo.hide {
-	animation-direction: normal;
-} */
-
 #submitName {
 	border: 2px solid white;
 	border-radius: 20px;
@@ -88,22 +101,21 @@ form#getPlayersNames {
 	background-color: white;
 	color: black;
 }
-/* 
-@keyframes hide {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
-	}
-} */
 
 #namesBox {
 	position: absolute;
+	min-width: 200px;
 	color: white;
+	animation: hide var(--animationtime) var(--animationtime) 1 linear reverse
+		both paused;
 }
 
 #namesBox p {
+	font-size: 28px;
+	text-align: center;
+}
+
+#namesBox p:not(:first-child) {
 	padding: 20px;
 	font-size: 32px;
 	border: 1px solid;
@@ -111,8 +123,56 @@ form#getPlayersNames {
 
 #namesBox p.active {
 	color: yellow;
+	font-weight: 900;
 }
 
 #namesBox p:first-child {
 	margin-bottom: 10px;
+}
+
+.resetBtn {
+	display: none;
+	position: absolute;
+	top: 50%;
+	left: 0;
+	width: 200px;
+	text-align: center;
+	animation: hide var(--animationtime) var(--animationtime) 1 linear reverse
+		both paused;
+}
+
+.resetBtn button {
+	position: relative;
+	border-radius: 10px;
+	background-color: yellow;
+	color: black;
+	border: 3px solid white;
+	padding: 10px 30px;
+	font-size: 20px;
+	overflow: hidden;
+	transition: 0.3s;
+	z-index: 2;
+}
+
+.resetBtn button:hover {
+	box-shadow: 0 0 5px 5px red;
+}
+
+dialog {
+	position: absolute;
+	text-align: center;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 80px;
+	text-transform: uppercase;
+	color: gold;
+	border: none;
+	background: none;
+	padding: 20px;
+}
+
+dialog::backdrop {
+	backdrop-filter: blur(2px);
+	background-color: rgba(0, 0, 0, 0.6);
 }
